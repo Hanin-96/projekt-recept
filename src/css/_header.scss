@@ -1,0 +1,21 @@
+@use 'base';
+@use 'grid';
+
+header {
+    @include grid.grid-header;
+    height: 15rem;
+    background-color: #800200;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: base.$base-padding;
+}
+
+.logotyp {
+    margin: 0 auto;
+    img {
+        display: block;
+        width: 100%;
+        max-width: 20rem;
+    }
+}

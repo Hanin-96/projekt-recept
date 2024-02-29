@@ -1,0 +1,8 @@
+@use 'grid';
+
+footer {
+    @include grid.grid-footer;
+    height: 10rem;
+    background-color: black;
+    margin-top: 15rem;
+}

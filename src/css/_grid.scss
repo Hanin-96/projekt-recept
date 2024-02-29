@@ -1,0 +1,27 @@
+body {
+    font-family: "work-sans", sans-serif;
+    background-color: #FFFAEC;
+    display: grid;
+    height: 100%;
+    max-width: 1920px;
+    width: 100%;
+    overflow-x: hidden;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header     header"
+        "main       main"
+        "footer     footer";
+}
+
+@mixin grid-header {
+    grid-area: header;
+}
+
+@mixin grid-main {
+    grid-area: main;
+}
+
+@mixin grid-footer {
+    grid-area: footer;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "projekt-recept",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Hanin Farhan",
+  "license": "ISC",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "sharp": "^0.31.3"
+  },
+  "browserslist": [
+    "defaults and fully supports es6-module",
+    "maintained node versions"
+  ]
+}
