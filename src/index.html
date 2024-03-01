@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="js/search.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/5f4c540c40.js" crossorigin="anonymous" type="module"></script>
 </head>
 
 <body>
@@ -24,16 +25,25 @@
                 <p><Span id="bold-subtitle">Are you unsure what to cook for dinner or do you want to impress people with new recipes?</Span>, then this is the right place for you. We offer you a variety of cuisines with different flavours and ingredients. Type in name of country to see recipes.</p>
             </div>
 
-            <div class="welcome-image"></div>
+            <div class="welcome-image">
+                <div class="image-bowl">
+                    <picture>
+                        <source srcset="img/ramen.png?as=webp&height=500&width=500" type="image/webp">
+                        <img src="img/ramen.png" alt="Bowl with Japanese Ramen Illustration">
+                    </picture>
+                </div>
+            </div>
         </div>
 
-        <section class="search-container">
-            <label for="recipe-search">Search recipe</label>
-            <input type="search" id="recipe-search" name="recipe-search" placeholder="Sweden">
-            <button id="search-btn">Search</button>
-        </section>
+        <div class="search-wrap">
+            <div class="search-container">
+                <label for="recipe-search">Search for recipe</label>
+                <input type="search" id="recipe-search" name="recipe-search" placeholder="Sweden">
+                <button id="search-btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
 
-        <section id="search-list"></section>
+        <div id="search-list"></div>
 
         <div class="flag"></div>
 
