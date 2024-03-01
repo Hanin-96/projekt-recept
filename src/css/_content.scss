@@ -1,4 +1,9 @@
+@use 'base';
+
+main {
+    padding: base.$base-padding;
+}
+
 .welcome-text {
     width: 100%;
-    padding: 2rem;
 }
