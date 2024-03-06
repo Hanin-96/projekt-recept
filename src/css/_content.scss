@@ -40,11 +40,11 @@ main {
 .search-wrap {
     width: 100%;
     background-color: base.$grey-bg;
-    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 3rem;
+    padding: base.$base-padding;
 
     .search-container {
         width: 100%;
@@ -76,6 +76,23 @@ main {
         color: base.$text-light;
         display: block;
         margin: 1rem auto;
+    }
+}
 
+.flag-wrap {
+    display: none;
+    background-color: base.$yellow-bg;
+
+    #flag {
+        max-width: 120rem;
+        width: 100%;
+        margin: 0 auto;
+        padding: base.$base-padding;
+    }
+
+    img {
+        display: block;
+        max-width: 10rem;
+        width: 100%;
     }
 }

@@ -1,3 +1,5 @@
+@use 'base';
+
 .circle {
     background-color: #FFB74F;
     height: 50rem;
@@ -8,4 +10,8 @@
 
 i {
     margin-left: 1rem;
+}
+
+button {
+    cursor: pointer;
 }

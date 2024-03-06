@@ -9,7 +9,7 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="js/search.js" type="module"></script>
     <script src="https://kit.fontawesome.com/5f4c540c40.js" crossorigin="anonymous" type="module"></script>
 </head>
@@ -35,17 +35,20 @@
             </div>
         </div>
 
+        <!--Sökfält-->
         <div class="search-wrap">
             <div class="search-container">
-                <label for="recipe-search">Search for recipe</label>
+                <label for="recipe-search">Which country <br>
+                    would you like to cook from today?</label>
                 <input type="search" id="recipe-search" name="recipe-search" placeholder="Sweden">
                 <button id="search-btn">Search<i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </div>
 
-        <div id="search-list"></div>
-
-        <div class="flag"></div>
+        <div class="flag-wrap">
+            <div id="flag"></div>
+            <span class="country-name"></span>
+        </div>
 
 
     </main>
