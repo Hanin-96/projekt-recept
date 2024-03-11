@@ -33,7 +33,7 @@ async function searchCountry() {
 async function displayCountry() {
     document.getElementById("flag").innerHTML = "";
     document.querySelector(".country-name").innerHTML = "";
-    document.getElementById("recept-list").innerHTML = "";
+    document.getElementById("recipe-list").innerHTML = "";
 
     let country = await searchCountry();
     document.querySelector(".flag-wrap").style.display = "block"; //Gör css stil för flag-wrap aktiv
@@ -55,10 +55,66 @@ async function displayCountry() {
 
     //Skriver ut alla recept som finns dvs namn och foton
     if (recipees && recipees.length > 0) {
-        recipees.forEach((recipe) => document.getElementById("recept-list").innerHTML += `<div class="recept-wrap"><p>${recipe.title}</p>` + `<img src="${recipe.image}" alt="${recipe.title}"></div>`)
-        
+
+        let recipeList = document.getElementById("recipe-list");
+        recipees.forEach((recipe) => {
+
+            //skapar nytt div element för recept
+            let recipeWrap = document.createElement("div");
+            recipeWrap.className = "recipe-wrap";
+
+            //skapar nytt p element för recept
+            let p = document.createElement("p");
+            let pText = document.createTextNode(recipe.title);
+            p.appendChild(pText);
+
+            //skapar nytt img element för recept
+            let imgRecipe = document.createElement("img");
+            imgRecipe.src = recipe.image;
+            imgRecipe.alt = recipe.title;
+
+            //Slå ihop med recipeWrap
+            recipeWrap.appendChild(p);
+            recipeWrap.appendChild(imgRecipe);
+            recipeList.appendChild(recipeWrap);
+
+            recipeWrap.addEventListener("click", () => {
+                let plateWrap = document.querySelector(".plate-wrap");
+                let plateText = document.querySelector(".plate-text");
+
+                plateText.innerHTML = "";
+
+                //Slå ihop h2 innehåll
+                let recipeH2 = document.createElement("h2");
+                let recipeH2Text = document.createTextNode(recipe.title);
+                recipeH2.appendChild(recipeH2Text);
+
+                //Slå ihop p innehåll
+                let recipePEl = document.createElement("p");
+                recipePEl.innerHTML = recipe.summary;
+
+                let recipeIngredients = document.createElement("div");
+                console.log(recipe)
+                recipe.extendedIngredients.forEach((ingredient) => {
+                    let ingredientP = document.createElement("p");
+                    let ingredientText = document.createTextNode(ingredient.original);
+
+                    ingredientP.appendChild(ingredientText);
+                    recipeIngredients.appendChild(ingredientP);
+                });
+                //Slå ihop div innehåll
+                plateText.appendChild(recipeH2);
+                plateText.appendChild(recipePEl);
+                plateText.appendChild(recipeIngredients);
+                plateWrap.appendChild(plateText);
+                
+
+            })
+
+        });
+
     } else {
-        document.getElementById("recept-list").innerHTML = "<p>Recipees not found</p>";
+        document.getElementById("recipe-list").innerHTML = "<p>Recipees not found</p>";
     }
 
 }
@@ -66,7 +122,7 @@ async function displayCountry() {
 async function searchRecipe(country) {
 
     //Hämtar specifik recept beroende på land
-    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=a27a5cdda1734a16ab18c52ed375e373&number=20&addRecipeInformation=true";
+    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=a27a5cdda1734a16ab18c52ed375e373&number=20&addRecipeInformation=true&fillIngredients=true";
     //Kör fetch på url som returnerar en promise
     try {
         let response = await fetch(recipeUrl);

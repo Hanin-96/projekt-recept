@@ -110,7 +110,7 @@ main {
 
 }
 
-#recept-list {
+#recipe-list {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
@@ -121,7 +121,7 @@ main {
     margin-top: 5rem;
     padding: 2rem;
 
-    .recept-wrap {
+    .recipe-wrap {
         max-width: 20rem;
         width: 100%;
         display: flex;
@@ -149,6 +149,7 @@ main {
     max-width: 120rem;
     margin: 0 auto 15rem;
     display: flex;
+    flex-direction: row-reverse;
     gap: 2rem;
 
     .plate-circle {
