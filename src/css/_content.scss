@@ -126,6 +126,7 @@ main {
         width: 100%;
         display: flex;
         flex-direction: column-reverse;
+        cursor: pointer;
     }
 
     img {
@@ -143,9 +144,22 @@ main {
 }
 
 .plate-wrap {
-    max-width: 120rem;
+    justify-content: right;
     width: 100%;
+    max-width: 120rem;
+    margin: 0 auto 15rem;
     display: flex;
-    justify-content: flex-end;
-    margin: 0 auto;
+    gap: 2rem;
+
+    .plate-circle {
+        width: 100%;
+        height: 40rem;
+        max-width: 40rem;
+        background-color: #FFB74F;
+        border-radius: 50rem;
+        position: relative;
+        z-index: -1;
+        right: 5rem;
+        bottom: 35rem;
+    }
 }
