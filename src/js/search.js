@@ -52,65 +52,18 @@ async function displayCountry() {
 
     //Printa ut recept
     let recipees = await searchRecipe(country.demonyms.eng.m);
+    
+    reset();
 
     //Skriver ut alla recept som finns dvs namn och foton
     if (recipees && recipees.length > 0) {
 
         let recipeList = document.getElementById("recipe-list");
+        recipeList.replaceChildren();
+
+        recipeList.style.display = "flex";
         recipees.forEach((recipe) => {
-
-            //skapar nytt div element för recept
-            let recipeWrap = document.createElement("div");
-            recipeWrap.className = "recipe-wrap";
-
-            //skapar nytt p element för recept
-            let p = document.createElement("p");
-            let pText = document.createTextNode(recipe.title);
-            p.appendChild(pText);
-
-            //skapar nytt img element för recept
-            let imgRecipe = document.createElement("img");
-            imgRecipe.src = recipe.image;
-            imgRecipe.alt = recipe.title;
-
-            //Slå ihop med recipeWrap
-            recipeWrap.appendChild(p);
-            recipeWrap.appendChild(imgRecipe);
-            recipeList.appendChild(recipeWrap);
-
-            recipeWrap.addEventListener("click", () => {
-                let plateWrap = document.querySelector(".plate-wrap");
-                let plateText = document.querySelector(".plate-text");
-
-                plateText.innerHTML = "";
-
-                //Slå ihop h2 innehåll
-                let recipeH2 = document.createElement("h2");
-                let recipeH2Text = document.createTextNode(recipe.title);
-                recipeH2.appendChild(recipeH2Text);
-
-                //Slå ihop p innehåll
-                let recipePEl = document.createElement("p");
-                recipePEl.innerHTML = recipe.summary;
-
-                let recipeIngredients = document.createElement("div");
-                console.log(recipe)
-                recipe.extendedIngredients.forEach((ingredient) => {
-                    let ingredientP = document.createElement("p");
-                    let ingredientText = document.createTextNode(ingredient.original);
-
-                    ingredientP.appendChild(ingredientText);
-                    recipeIngredients.appendChild(ingredientP);
-                });
-                //Slå ihop div innehåll
-                plateText.appendChild(recipeH2);
-                plateText.appendChild(recipePEl);
-                plateText.appendChild(recipeIngredients);
-                plateWrap.appendChild(plateText);
-                
-
-            })
-
+            createRecipe(recipe, recipeList);
         });
 
     } else {
@@ -119,10 +72,89 @@ async function displayCountry() {
 
 }
 
+function createRecipe(recipe, recipeList) {
+    //skapar nytt div element för recept
+    let recipeWrap = document.createElement("div");
+    recipeWrap.className = "recipe-wrap";
+
+    //skapar nytt p element för recept
+    let p = document.createElement("p");
+    let pText = document.createTextNode(recipe.title);
+    p.appendChild(pText);
+
+    //skapar nytt img element för recept
+    let imgRecipe = document.createElement("img");
+    imgRecipe.src = recipe.image;
+    imgRecipe.alt = recipe.title;
+
+    //Slå ihop med recipeWrap
+    recipeWrap.appendChild(p);
+    recipeWrap.appendChild(imgRecipe);
+    recipeList.appendChild(recipeWrap);
+
+    recipeWrap.addEventListener("click", () => {
+        displayRecipe(recipe);
+    });
+}
+
+function displayRecipe(recipe) {
+    let plateWrap = document.querySelector(".plate-wrap");
+    let plateText = document.querySelector(".plate-text");
+    let redBar = document.querySelector(".red-bar");
+    plateWrap.style.display = "flex";
+    redBar.style.display = "block";
+    plateWrap.scrollIntoView();
+
+
+
+    plateText.innerHTML = "";
+
+    //Slå ihop img för specifik recept
+    let plateContainer = document.querySelector(".plate-container");
+    let plateImgDiv = document.querySelector(".plate-image");
+    let plateImgEl = document.createElement("img");
+
+    plateImgDiv.innerHTML = "";
+
+    plateImgEl.src = recipe.image;
+    plateImgEl.alt = recipe.title;
+    plateImgDiv.appendChild(plateImgEl);
+    plateContainer.appendChild(plateImgDiv);
+
+    //Slå ihop h2 innehåll
+    let recipeH2 = document.createElement("h2");
+    let recipeH2Text = document.createTextNode(recipe.title);
+    recipeH2.appendChild(recipeH2Text);
+
+    //Slå ihop p innehåll
+    let recipePEl = document.createElement("p");
+    recipePEl.innerHTML = recipe.summary;
+
+    let recipeIngredients = document.createElement("ul");
+    recipeIngredients.className = "ingredients-list";
+
+    //Vid uppreppning, ta bort dubbla samma ingredienser
+    recipe.extendedIngredients = removeDuplicateIngredients(recipe.extendedIngredients);
+
+    recipe.extendedIngredients.forEach((ingredient) => {
+        let ingredientLi = document.createElement("li");
+        let ingredientTextLi = document.createTextNode(ingredient.original);
+
+        ingredientLi.appendChild(ingredientTextLi);
+        recipeIngredients.appendChild(ingredientLi);
+    });
+    //Slå ihop div innehåll
+    plateText.appendChild(recipeH2);
+    plateText.appendChild(recipePEl);
+    plateText.appendChild(recipeIngredients);
+    plateWrap.appendChild(plateText);
+}
+
 async function searchRecipe(country) {
 
     //Hämtar specifik recept beroende på land
-    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=a27a5cdda1734a16ab18c52ed375e373&number=20&addRecipeInformation=true&fillIngredients=true";
+    //API-nyckel a27a5cdda1734a16ab18c52ed375e373
+    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=458947a7158e4062a08192e20a720fbc&number=20&addRecipeInformation=true&fillIngredients=true";
     //Kör fetch på url som returnerar en promise
     try {
         let response = await fetch(recipeUrl);
@@ -138,6 +170,35 @@ async function searchRecipe(country) {
         return null;
     }
 
+}
+
+function reset() {
+    
+    let plateText = document.querySelector(".plate-text");
+    plateText.replaceChildren();
+
+
+    let plateWrap = document.querySelector(".plate-wrap");
+    let redBar = document.querySelector(".red-bar");
+
+
+    plateWrap.style.display = "none";
+    redBar.style.display = "none"
+
+}
+
+//Tar bort alla dubletter dvs ingredienser som har samma id
+function removeDuplicateIngredients(ingredients) {
+    let uniqueIngredients = [];
+    let uniqueIds = [];
+    
+    ingredients.forEach(ingredient => {
+        if (!uniqueIds.includes(ingredient.id)) {
+            uniqueIngredients.push(ingredient);
+            uniqueIds.push(ingredient.id);
+        }
+    });
+    return uniqueIngredients;
 }
 
 

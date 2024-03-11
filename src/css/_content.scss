@@ -1,5 +1,6 @@
 @use 'base';
 @use 'grid';
+@use 'animations';
 
 main {
     @include grid.grid-main;
@@ -9,12 +10,12 @@ main {
 }
 
 .welcome-wrap {
-    max-width: 120rem;
+    max-width: base.$base-width;
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 2rem;
+    gap: base.$base-gap;
     margin: 0 auto;
     padding: base.$base-padding;
 }
@@ -84,7 +85,7 @@ main {
     background-color: base.$yellow-bg;
 
     #flag {
-        max-width: 120rem;
+        max-width: base.$base-width;
         width: 100%;
         margin: 0 auto;
         padding: base.$base-padding;
@@ -99,7 +100,7 @@ main {
     .country-name {
 
         p {
-            max-width: 120rem;
+            max-width: base.$base-width;
             width: 100%;
             padding-bottom: base.$base-padding;
             padding-left: base.$base-padding;
@@ -111,15 +112,17 @@ main {
 }
 
 #recipe-list {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     gap: 1rem;
     align-items: baseline;
-    max-width: 120rem;
+    max-width: base.$base-width;
     width: 100%;
     margin: 0 auto;
     margin-top: 5rem;
-    padding: 2rem;
+    padding: base.$base-padding;
+    visibility: hidden;
+    animation: text_fade 1s ease-in-out forwards;
 
     .recipe-wrap {
         max-width: 20rem;
@@ -136,21 +139,16 @@ main {
     }
 }
 
-.red-bar {
-    height: 10rem;
-    width: 100%;
-    background-color: #800200;
-    margin-bottom: 5rem;
-}
-
 .plate-wrap {
+    display: none;
     justify-content: right;
     width: 100%;
-    max-width: 120rem;
+    max-width: base.$base-width;
     margin: 0 auto 15rem;
-    display: flex;
     flex-direction: row-reverse;
-    gap: 2rem;
+    gap: base.$base-gap;
+    padding: base.$base-padding;
+    height: 70rem;
 
     .plate-circle {
         width: 100%;
@@ -163,4 +161,26 @@ main {
         right: 5rem;
         bottom: 35rem;
     }
+
+    .plate-image {
+        max-width: 30rem;
+        width: 100%;
+        position: relative;
+        bottom: 71rem;
+        left: 16rem;
+    
+        img {
+            width: 100%;
+            display: block;
+            border-radius: 4rem;
+        }
+    }
+
+    .plate-text {
+        animation: text_fade 1s ease-in-out forwards;
+        z-index: -1;
+        position: relative;
+        visibility: hidden;
+    }
 }
+
