@@ -26,11 +26,17 @@ main {
     p {
         margin-top: 5rem;
     }
+
+    span {
+        display: block;
+        margin-bottom: base.$base-margin;
+    }
 }
 
 .welcome-image {
     width: 100%;
     max-width: 50rem;
+    animation: move_image 2s ease-in-out forwards;
 
     img {
         display: block;
@@ -48,6 +54,8 @@ main {
     justify-content: center;
     margin-top: 3rem;
     padding: base.$base-padding;
+    visibility: hidden;
+    animation: fade_in_searchbar 1s 2s ease-in-out forwards;
 
     .search-container {
         width: 100%;
@@ -171,7 +179,7 @@ main {
     }
 
     .plate-recipe-text {
-        animation: text_fade 2s ease-in-out forwards;
+        animation: text_fade 1s ease-in-out forwards;
         z-index: -1;
         position: relative;
         visibility: hidden;
@@ -183,6 +191,8 @@ main {
     }
 
     .steps-list {
+        list-style: decimal;
+        margin-left: base.$base-margin;
         li {
             margin-bottom: base.$base-margin;
         }

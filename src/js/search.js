@@ -193,7 +193,7 @@ async function searchRecipe(country) {
 
     //Hämtar specifik recept beroende på land
     //API-nyckel a27a5cdda1734a16ab18c52ed375e373
-    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=458947a7158e4062a08192e20a720fbc&number=20&addRecipeInformation=true&fillIngredients=true";
+    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=458947a7158e4062a08192e20a720fbc&number=20&addRecipeInformation=true&fillIngredients=true&type=main+course&type=breakfast&type=soup&type=appetizer&type=salad&type=side+dish";
     //Kör fetch på url som returnerar en promise
     try {
         let response = await fetch(recipeUrl);

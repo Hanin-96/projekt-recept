@@ -5,7 +5,17 @@
 }
 
 
+@keyframes fade_in_searchbar {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
 
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
 
 @keyframes text_fade {
     from {

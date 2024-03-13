@@ -1,9 +1,19 @@
 @use 'grid';
+@use 'base';
+@use 'typography';
 
 footer {
     @include grid.grid-footer;
     height: 10rem;
-    background-color: black;
+    background-color: base.$dark-grey-bg;
     width: 100%;
     max-width: 1920px;
+    color: white;
+    padding: base.$base-padding;
+    margin: 0 auto;
+    
+    ul {
+        font-size: typography.$font-footer;
+        text-align: center;
+    }
 }
