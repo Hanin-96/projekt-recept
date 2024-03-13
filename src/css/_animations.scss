@@ -1,3 +1,11 @@
+.food-countries-text-animate:after {
+    font-weight: bold;
+    content: "" ;
+    animation: countries_change 10s steps(10, start) infinite forwards;
+}
+
+
+
 
 @keyframes text_fade {
     from {
@@ -18,5 +26,31 @@
 
     to {
         transform: translatex(0%);
+    }
+}
+
+@keyframes countries_change {
+    0% {
+        content: "Sweden";
+    }
+
+    20% {
+        content: "France";
+    }
+
+    40% {
+        content: "Greece";
+    }
+
+    60% {
+        content: "Japan";
+    }
+
+    80% {
+        content: "Italy";
+    }
+
+    100% {
+        content: "Sweden";
     }
 }

@@ -22,6 +22,10 @@ main {
 
 .welcome-text {
     width: 100%;
+
+    p {
+        margin-top: 5rem;
+    }
 }
 
 .welcome-image {
@@ -32,7 +36,7 @@ main {
         display: block;
         max-width: 50rem;
         width: 100%;
-        filter: drop-shadow(5px 5px 5px rgb(0, 0, 0, 0.3));
+        filter: base.$filter-shadow;
     }
 }
 
@@ -93,6 +97,7 @@ main {
         display: block;
         max-width: 10rem;
         width: 100%;
+        filter: base.$filter-shadow;
     }
 
     .country-name {
@@ -162,7 +167,7 @@ main {
     }
 
     picture img {
-        filter: drop-shadow(5px 5px 5px #0000004d);
+        filter: base.$filter-shadow;
     }
 
     .plate-recipe-text {
@@ -175,5 +180,11 @@ main {
     .plate-container {
             animation: move_image 2s ease-in-out forwards;
 
+    }
+
+    .steps-list {
+        li {
+            margin-bottom: base.$base-margin;
+        }
     }
 }

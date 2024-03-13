@@ -136,6 +136,11 @@ function displayRecipe(recipe) {
     let recipeH3Text = document.createTextNode("Ingredients:");
     recipeH3.appendChild(recipeH3Text);
 
+    //h3 text för ingredienser
+    let instructionsH3 = document.createElement("h3");
+    let instructionsH3Text = document.createTextNode("Instructions:");
+    instructionsH3.appendChild(instructionsH3Text);
+
 
     let recipeIngredients = document.createElement("ul");
     recipeIngredients.className = "ingredients-list";
@@ -177,6 +182,7 @@ function displayRecipe(recipe) {
     plateRecipeText.appendChild(recipeH2);
     plateRecipeText.appendChild(recipeH3);
     plateRecipeText.appendChild(recipeIngredients);
+    plateRecipeText.appendChild(instructionsH3);
     plateRecipeText.appendChild(instructionsEl);
 
     //Slå ihop skapade div med existerande div från html
