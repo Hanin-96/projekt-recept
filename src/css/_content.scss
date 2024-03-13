@@ -27,8 +27,6 @@ main {
 .welcome-image {
     width: 100%;
     max-width: 50rem;
-    background-color: base.$yellow-bg;
-    border-radius: 50rem;
 
     img {
         display: block;
@@ -148,27 +146,14 @@ main {
     flex-direction: row-reverse;
     gap: base.$base-gap;
     padding: base.$base-padding;
-    height: 70rem;
-
-    .plate-circle {
-        width: 100%;
-        height: 40rem;
-        max-width: 40rem;
-        background-color: #FFB74F;
-        border-radius: 50rem;
-        position: relative;
-        z-index: -1;
-        right: 5rem;
-        bottom: 35rem;
-    }
 
     .plate-image {
         max-width: 30rem;
         width: 100%;
         position: relative;
-        bottom: 71rem;
-        left: 16rem;
-    
+        bottom: 35rem;
+        left: 14.1rem;
+
         img {
             width: 100%;
             display: block;
@@ -176,11 +161,19 @@ main {
         }
     }
 
-    .plate-text {
-        animation: text_fade 1s ease-in-out forwards;
+    picture img {
+        filter: drop-shadow(5px 5px 5px #0000004d);
+    }
+
+    .plate-recipe-text {
+        animation: text_fade 2s ease-in-out forwards;
         z-index: -1;
         position: relative;
         visibility: hidden;
     }
-}
 
+    .plate-container {
+            animation: move_image 2s ease-in-out forwards;
+
+    }
+}

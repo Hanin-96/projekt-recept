@@ -52,7 +52,7 @@ async function displayCountry() {
 
     //Printa ut recept
     let recipees = await searchRecipe(country.demonyms.eng.m);
-    
+
     reset();
 
     //Skriver ut alla recept som finns dvs namn och foton
@@ -92,6 +92,9 @@ function createRecipe(recipe, recipeList) {
     recipeWrap.appendChild(imgRecipe);
     recipeList.appendChild(recipeWrap);
 
+     //Scrolla ner till avsnitt
+     recipeList.scrollIntoView();
+
     recipeWrap.addEventListener("click", () => {
         displayRecipe(recipe);
     });
@@ -103,6 +106,8 @@ function displayRecipe(recipe) {
     let redBar = document.querySelector(".red-bar");
     plateWrap.style.display = "flex";
     redBar.style.display = "block";
+
+    //Scrolla ner till avsnitt
     plateWrap.scrollIntoView();
 
 
@@ -126,9 +131,11 @@ function displayRecipe(recipe) {
     let recipeH2Text = document.createTextNode(recipe.title);
     recipeH2.appendChild(recipeH2Text);
 
-    //Slå ihop p innehåll
-    let recipePEl = document.createElement("p");
-    recipePEl.innerHTML = recipe.summary;
+    //h3 text för ingredienser
+    let recipeH3 = document.createElement("h3");
+    let recipeH3Text = document.createTextNode("Ingredients:");
+    recipeH3.appendChild(recipeH3Text);
+
 
     let recipeIngredients = document.createElement("ul");
     recipeIngredients.className = "ingredients-list";
@@ -143,11 +150,37 @@ function displayRecipe(recipe) {
         ingredientLi.appendChild(ingredientTextLi);
         recipeIngredients.appendChild(ingredientLi);
     });
+
+    let instructionsEl = document.createElement("ul");
+        instructionsEl.className = "steps-list";
+
+    let instruction = recipe.analyzedInstructions[0];
+    if (instruction && instruction.steps.length > 0) {
+        
+        //Skriv ut lista på steg för steg instruktioner för recept
+        instruction.steps.forEach((step) => {
+            let stepLi = document.createElement("li");
+            let stepTextLi = document.createTextNode(step.step);
+
+            stepLi.appendChild(stepTextLi);
+            instructionsEl.appendChild(stepLi);
+        });
+
+
+    }
+
+    //Skapa ny div element
+    let plateRecipeText = document.createElement("div");
+    plateRecipeText.className = "plate-recipe-text";
+
     //Slå ihop div innehåll
-    plateText.appendChild(recipeH2);
-    plateText.appendChild(recipePEl);
-    plateText.appendChild(recipeIngredients);
-    plateWrap.appendChild(plateText);
+    plateRecipeText.appendChild(recipeH2);
+    plateRecipeText.appendChild(recipeH3);
+    plateRecipeText.appendChild(recipeIngredients);
+    plateRecipeText.appendChild(instructionsEl);
+
+    //Slå ihop skapade div med existerande div från html
+    plateText.appendChild(plateRecipeText);
 }
 
 async function searchRecipe(country) {
@@ -173,7 +206,7 @@ async function searchRecipe(country) {
 }
 
 function reset() {
-    
+
     let plateText = document.querySelector(".plate-text");
     plateText.replaceChildren();
 
@@ -191,7 +224,7 @@ function reset() {
 function removeDuplicateIngredients(ingredients) {
     let uniqueIngredients = [];
     let uniqueIds = [];
-    
+
     ingredients.forEach(ingredient => {
         if (!uniqueIds.includes(ingredient.id)) {
             uniqueIngredients.push(ingredient);

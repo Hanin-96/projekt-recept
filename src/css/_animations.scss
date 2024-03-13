@@ -10,3 +10,13 @@
         visibility: visible;
     }
 }
+
+@keyframes move_image {
+    from {
+        transform: translatex(200%);
+    }
+
+    to {
+        transform: translatex(0%);
+    }
+}
