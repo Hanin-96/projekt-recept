@@ -51,23 +51,23 @@ async function displayCountry() {
 
 
     //Printa ut recept
-    let recipees = await searchRecipe(country.demonyms.eng.m);
+    let recipes = await searchRecipe(country.demonyms.eng.m);
 
     reset();
 
     //Skriver ut alla recept som finns dvs namn och foton
-    if (recipees && recipees.length > 0) {
+    if (recipes && recipes.length > 0) {
 
         let recipeList = document.getElementById("recipe-list");
         recipeList.replaceChildren();
 
         recipeList.style.display = "flex";
-        recipees.forEach((recipe) => {
+        recipes.forEach((recipe) => {
             createRecipe(recipe, recipeList);
         });
 
     } else {
-        document.getElementById("recipe-list").innerHTML = "<p>Recipees not found</p>";
+        document.getElementById("recipe-list").innerHTML = "<p>Recipes not found</p>";
     }
 
 }
@@ -81,6 +81,7 @@ function createRecipe(recipe, recipeList) {
     let p = document.createElement("p");
     let pText = document.createTextNode(recipe.title);
     p.appendChild(pText);
+    p.style.fontWeight = "600";
 
     //skapar nytt img element för recept
     let imgRecipe = document.createElement("img");
@@ -110,15 +111,12 @@ function displayRecipe(recipe) {
     //Scrolla ner till avsnitt
     plateWrap.scrollIntoView();
 
-
-
-    plateText.innerHTML = "";
-
     //Slå ihop img för specifik recept
     let plateContainer = document.querySelector(".plate-container");
     let plateImgDiv = document.querySelector(".plate-image");
     let plateImgEl = document.createElement("img");
 
+    plateText.innerHTML = "";
     plateImgDiv.innerHTML = "";
 
     plateImgEl.src = recipe.image;
@@ -193,7 +191,7 @@ async function searchRecipe(country) {
 
     //Hämtar specifik recept beroende på land
     //API-nyckel a27a5cdda1734a16ab18c52ed375e373
-    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=458947a7158e4062a08192e20a720fbc&number=20&addRecipeInformation=true&fillIngredients=true&type=main+course&type=breakfast&type=soup&type=appetizer&type=salad&type=side+dish";
+    const recipeUrl = "https://api.spoonacular.com/recipes/complexSearch?query=" + country + "&apiKey=458947a7158e4062a08192e20a720fbc&number=20&addRecipeInformation=true&fillIngredients=true&type=main+course,breakfast,soup,bread,appetizer,salad,side+dish";
     //Kör fetch på url som returnerar en promise
     try {
         let response = await fetch(recipeUrl);

@@ -4,7 +4,6 @@
 
 footer {
     @include grid.grid-footer;
-    height: 10rem;
     background-color: base.$dark-grey-bg;
     width: 100%;
     max-width: 1920px;

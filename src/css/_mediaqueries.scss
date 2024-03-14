@@ -1,0 +1,37 @@
+@media screen and (max-width:950px) {
+
+    .plate-wrap {
+        flex-direction: column;
+
+
+    }
+
+    .welcome-wrap {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    #recipe-list {
+        gap: 2rem;
+    }
+
+    .plate-container {
+        animation: no !important;
+        margin: 0 auto;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width:550px) {
+    #recipe-list .recipe-wrap {
+        max-width: 60rem;
+
+        img {
+            max-width: 60rem;
+        }
+    }
+}
