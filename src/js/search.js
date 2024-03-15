@@ -31,8 +31,6 @@ async function searchCountry() {
 
 //Funktion som skriver ut datan i form av flagga
 async function displayCountry() {
-    reset();
-    
     document.getElementById("flag").innerHTML = "";
     document.querySelector(".country-name").innerHTML = "";
     document.getElementById("recipe-list").innerHTML = "";
@@ -55,6 +53,8 @@ async function displayCountry() {
     //Printa ut recept
     let recipes = await searchRecipe(country.demonyms.eng.m);
 
+    reset();
+
     //Skriver ut alla recept som finns dvs namn och foton
     if (recipes && recipes.length > 0) {
 
@@ -68,6 +68,7 @@ async function displayCountry() {
 
     } else {
         document.getElementById("recipe-list").innerHTML = "<p>Recipes not found</p>";
+        document.getElementById("recipe-list").style.display = "block";
     }
 
 }
@@ -105,6 +106,7 @@ function displayRecipe(recipe) {
     let plateWrap = document.querySelector(".plate-wrap");
     let plateText = document.querySelector(".plate-text");
     let redBar = document.querySelector(".red-bar");
+    
     plateWrap.style.display = "flex";
     redBar.style.display = "block";
 
