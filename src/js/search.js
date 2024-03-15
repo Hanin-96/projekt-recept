@@ -31,6 +31,8 @@ async function searchCountry() {
 
 //Funktion som skriver ut datan i form av flagga
 async function displayCountry() {
+    reset();
+    
     document.getElementById("flag").innerHTML = "";
     document.querySelector(".country-name").innerHTML = "";
     document.getElementById("recipe-list").innerHTML = "";
@@ -52,8 +54,6 @@ async function displayCountry() {
 
     //Printa ut recept
     let recipes = await searchRecipe(country.demonyms.eng.m);
-
-    reset();
 
     //Skriver ut alla recept som finns dvs namn och foton
     if (recipes && recipes.length > 0) {
