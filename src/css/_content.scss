@@ -36,7 +36,7 @@ main {
 .welcome-image {
     width: 100%;
     max-width: 45rem;
-    animation: move_image 2s ease-in-out forwards;
+    animation: move_rotate_image 2s ease-in-out forwards;
     position: relative;
 
     img {
@@ -53,7 +53,6 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 3rem;
     padding: base.$base-padding;
     visibility: hidden;
     animation: fade_in_searchbar 1s 2s ease-in-out forwards;
@@ -164,13 +163,12 @@ main {
 
     .plate-recipe-text {
         animation: text_fade 1s ease-in-out forwards;
-        z-index: -1;
         position: relative;
         visibility: hidden;
     }
 
     .plate-container {
-        animation: move_image 2s ease-in-out forwards;
+        animation: move_image 2s ease-in forwards;
         position: relative;
         max-width: 60rem;
         width: 100%;

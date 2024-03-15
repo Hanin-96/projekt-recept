@@ -1,0 +1,29 @@
+@use 'base';
+
+@media (prefers-color-scheme: dark) {
+
+    main {
+        background-color: base.$dark-grey-bg;
+        color: base.$text-light;
+    }
+
+    .country-name {
+        color: base.$text-dark;
+    }
+
+    .welcome-wrap {
+        color: base.$text-light;
+    }
+
+    .search-wrap {
+        background-color: base.$light-black;
+    }
+
+    .plate-text {
+        color: base.$text-light;
+    }
+
+    footer {
+        background-color: black ;
+    }
+}

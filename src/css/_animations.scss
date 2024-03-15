@@ -28,6 +28,15 @@
         visibility: visible;
     }
 }
+@keyframes move_rotate_image {
+    from {
+        transform: translatex(200%);
+    }
+
+    to {
+        transform: translatex(0%) rotate(360deg);
+    }
+}
 
 @keyframes move_image {
     from {
