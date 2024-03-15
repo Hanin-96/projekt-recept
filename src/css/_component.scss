@@ -1,12 +1,5 @@
 @use 'base';
 
-.circle {
-    background-color: #FFB74F;
-    height: 50rem;
-    max-width: 50rem;
-    width: 100%;
-    border-radius: 50rem;
-}
 
 i {
     margin-left: 1rem;
@@ -19,29 +12,29 @@ button {
 .red-bar {
     height: 10rem;
     width: 100%;
-    background-color: #800200;
+    background-color: base.$red-bg;
     margin-bottom: base.$base-margin;
     display: none;
 }
 
 //Scroll knapp
-#scroll-to-top {
+#scroll-btn {
     display: none;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
     max-width: 10rem;
     max-height: 10rem;
     width: 100%;
     height: 100%;
     justify-content: center;
-    background-color: base.$white;
+    background-color: base.$red-bg;
     border: none ;
     bottom: 35px;
     right: 35px;
     cursor: pointer;
     position: fixed;
     border-radius: 50rem;
+    color: base.$text-light;
 
     i {
         margin: 0 auto;

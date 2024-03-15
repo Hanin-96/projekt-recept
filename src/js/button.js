@@ -1,4 +1,4 @@
-const scrollBtn = document.getElementById("scroll-to-top");
+const scrollBtn = document.getElementById("scroll-btn");
 
 window.addEventListener("scroll", checkHeight);
 

@@ -1,3 +1,5 @@
+@use 'base';
+
 @media screen and (max-width:950px) {
 
     .plate-wrap {
@@ -30,12 +32,22 @@
 @media screen and (max-width:550px) {
     #recipe-list {
         .recipe-wrap {
-
             max-width: 60rem;
 
-            img {
-                max-width: 60rem;
-            }
         }
+
+        img {
+            max-width: 60rem;
+        }
+    }
+
+    #scroll-btn {
+        max-width: unset;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        height: unset;
+        max-height: unset;
+        padding: base.$base-padding-half;
     }
 }
