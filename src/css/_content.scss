@@ -125,7 +125,7 @@ main {
 #recipe-list {
     display: none;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     align-items: baseline;
     max-width: base.$base-width;
     width: 100%;
@@ -134,7 +134,7 @@ main {
     padding: base.$base-padding;
     visibility: hidden;
     animation: text_fade 1s ease-in-out forwards;
-    justify-content: space-around;
+    justify-content: space-between;
 
     .recipe-wrap {
         max-width: 20rem;

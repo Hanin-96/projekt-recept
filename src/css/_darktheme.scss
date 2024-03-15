@@ -23,6 +23,12 @@
         color: base.$text-light;
     }
 
+    #flag {
+        p {
+            color: base.$text-dark
+        }
+    }
+
     footer {
         background-color: black ;
     }

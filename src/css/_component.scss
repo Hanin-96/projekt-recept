@@ -23,3 +23,27 @@ button {
     margin-bottom: base.$base-margin;
     display: none;
 }
+
+//Scroll knapp
+#scroll-to-top {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    max-width: 10rem;
+    max-height: 10rem;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background-color: base.$white;
+    border: none ;
+    bottom: 35px;
+    right: 35px;
+    cursor: pointer;
+    position: fixed;
+    border-radius: 50rem;
+
+    i {
+        margin: 0 auto;
+    }
+}

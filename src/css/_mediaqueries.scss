@@ -14,6 +14,7 @@
 
     #recipe-list {
         gap: 2rem;
+        justify-content: space-evenly;
     }
 
     .plate-container {
@@ -27,11 +28,14 @@
 }
 
 @media screen and (max-width:550px) {
-    #recipe-list .recipe-wrap {
-        max-width: 60rem;
+    #recipe-list {
+        .recipe-wrap {
 
-        img {
             max-width: 60rem;
+
+            img {
+                max-width: 60rem;
+            }
         }
     }
 }
