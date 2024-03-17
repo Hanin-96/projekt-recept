@@ -18,7 +18,6 @@ async function searchCountry() {
         let response = await fetch(url);
 
         let data = await response.json();
-        console.log(data);
 
         return data[0];//Hämtar första index
 
@@ -197,7 +196,6 @@ async function searchRecipe(country) {
         let response = await fetch(recipeUrl);
 
         let recipeData = await response.json();
-        console.log(recipeData);
 
         return recipeData.results;
 
