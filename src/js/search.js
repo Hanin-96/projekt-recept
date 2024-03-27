@@ -101,7 +101,7 @@ function createRecipe(recipe, recipeList) {
     });
 }
 
-function displayRecipe(recipe) {
+async function displayRecipe(recipe) {
     let plateWrap = document.querySelector(".plate-wrap");
     let plateText = document.querySelector(".plate-text");
     let redBar = document.querySelector(".red-bar");
@@ -158,7 +158,9 @@ function displayRecipe(recipe) {
     let instructionsEl = document.createElement("ul");
         instructionsEl.className = "steps-list";
 
-    let instruction = recipe.analyzedInstructions[0];
+   
+        let instruction = await getInstructions(recipe.id);
+
     if (instruction && instruction.steps.length > 0) {
         
         //Skriv ut lista på steg för steg instruktioner för recept
@@ -238,7 +240,21 @@ function removeDuplicateIngredients(ingredients) {
     return uniqueIngredients;
 }
 
+async function getInstructions(recipeId) {
+    const recipeUrl = "https://api.spoonacular.com/recipes/" + recipeId + "/analyzedInstructions?apiKey=458947a7158e4062a08192e20a720fbc";
+    //Kör fetch på url som returnerar en promise
+    try {
+        let response = await fetch(recipeUrl);
 
+        let instructionsData = await response.json();
+        return instructionsData[0];
+
+
+    } catch (error) {
+        console.error(error); //Vid fel körs error meddelande i konsollen
+        return null;
+    }
+}
 
 
 
